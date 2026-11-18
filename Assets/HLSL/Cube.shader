@@ -114,8 +114,7 @@ Shader "Custom/Cube"
 
                 VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
 
-                VertexNormalInputs normalInput =
-                    GetVertexNormalInputs(input.normalOS);
+                VertexNormalInputs normalInput = GetVertexNormalInputs(input.normalOS);
 
                 output.positionCS = vertexInput.positionCS;
 
@@ -131,28 +130,19 @@ Shader "Custom/Cube"
             // =========================================
             // 5. Fragment Shader
             // =========================================
-
-            half4 frag(
-                Varyings input,
-                FRONT_FACE_TYPE facing : FRONT_FACE_SEMANTIC
-            ) : SV_Target
+            half4 frag(Varyings input, FRONT_FACE_TYPE facing : FRONT_FACE_SEMANTIC) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(input);
 
                 // -------------------------------------
                 // A. Front / Back Face Detection
                 // -------------------------------------
-
-                bool isFrontFace = IS_FRONT_VFACE(
-                    facing,
-                    true,
-                    false
-                );
+                bool isFrontFace = IS_FRONT_VFACE(facing, true, false);
 
                 // -------------------------------------
                 // B. Normal and View Direction
                 // -------------------------------------
-
+                
                 float3 normalWS = normalize(input.normalWS);
 
                 // Flip normal for back faces
@@ -161,22 +151,14 @@ Shader "Custom/Cube"
                     normalWS = -normalWS;
                 }
 
-                float3 viewDirWS = normalize(
-                    GetWorldSpaceViewDir(input.positionWS)
-                );
-
+                float3 viewDirWS = normalize(GetWorldSpaceViewDir(input.positionWS));
                 // -------------------------------------
                 // C. Fresnel Edge Effect
                 // -------------------------------------
 
-                float NdotV = saturate(
-                    dot(normalWS, viewDirWS)
-                );
+                float NdotV = saturate(dot(normalWS, viewDirWS));
 
-                float fresnel = pow(
-                    1.0 - NdotV,
-                    _EdgePower
-                );
+                float fresnel = pow(1.0 - NdotV, _EdgePower);
 
                 // -------------------------------------
                 // D. Geometric Edge Detection
@@ -186,9 +168,7 @@ Shader "Custom/Cube"
 
                 float3 absPos = abs(input.positionOS);
 
-                float3 absNormal = abs(
-                    normalize(input.normalOS)
-                );
+                float3 absNormal = abs(normalize(input.normalOS));
 
                 // Distance to each local-space boundary
                 float distX = 0.5 - absPos.x;
@@ -213,10 +193,7 @@ Shader "Custom/Cube"
                 float lineZ = edgeZ * (1.0 - absNormal.z);
 
                 // Combine edge masks
-                float innerLines = max(
-                    lineX,
-                    max(lineY, lineZ)
-                );
+                float innerLines = max(lineX,max(lineY, lineZ));
 
                 // -------------------------------------
                 // E. Edge Emission
