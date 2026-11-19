@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_09_Edge_Glow 1
-  m_Shader: {fileID: -6465566751694194690, guid: f52b0ba9496d6b148996216f4bec7b60,
+  m_Name: 09_Wave_foam
+  m_Shader: {fileID: -6465566751694194690, guid: cdc1d93fed6f5c0418403eeec1c06184,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Base_Texture:
-        m_Texture: {fileID: 2800000, guid: 549a1cb99fe28814b938310bd2c09370, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -42,14 +42,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Edge_Threshold: 0.063
+    - _Depth_Sample_Offset: 0.0071
+    - _Foam_Distance: 5
+    - _Foam_Scale: 500
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Wave_Speed: 1.5
+    - _Wave_Sthrength: 1
     m_Colors:
-    - _Base_Color: {r: 1, g: 0.990566, b: 1, a: 1}
-    - _Glow_Color: {r: 4.431555, g: 3.0711133, b: 0.9824673, a: 1}
+    - _Base_Color: {r: 0.18155926, g: 0.5984011, b: 0.754717, a: 1}
+    - _Foam_Color: {r: 0.8843004, g: 0.90415263, b: 0.9056604, a: 1}
+    - _Foam_Velocity: {r: 0.02, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &1784032497167562209
+--- !u!114 &2716171350963612778
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

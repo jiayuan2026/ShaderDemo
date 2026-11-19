@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7407288561901156926
+--- !u!114 &-7619019695355313829
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_07_Fresnel
-  m_Shader: {fileID: -6465566751694194690, guid: 96250239e537e41429237e9ca443f97e,
+  m_Name: 08_IntersectionOcclusion
+  m_Shader: {fileID: -6465566751694194690, guid: b344400c1c1ac9145ae56e41873301f4,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -55,10 +55,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fresnel_Power: 7.5
+    - _Intersection_Power: 5
+    - _Occlusion_Strength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Base_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Fresnel_Color: {r: 22.671642, g: 7.26434, b: 1.6041255, a: 1}
   m_BuildTextureStacks: []
